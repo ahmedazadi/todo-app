@@ -1,39 +1,43 @@
+// use state to toggle between line-through and no-underline
+import { useState } from "react";
+// import bootsstrap icons from reac-incon
+import { BsFillHandThumbsUpFill, BsFillXSquareFill } from "react-icons/bs";
+
 function Todo(prop) {
+  const [lineThrough, setLineThrough] = useState("no-underline");
   return (
-    <div className="bg-sky-700 my-1 ">
-      <p className=" w-8/12 inline-block">{prop.text}</p>
-      <button
-        className="w-2/12"
-        onClick={() => {
-          // set a new value to TodoList
-          prop.setTodoList(
-            prop.todoList.map((item) => {
-              // map through the items
-              if (item.id === prop.id) {
-                // if the item is found the return below object
-                return {
-                  // leave everything as they are
-                  ...item,
-                  // change the value of is done to the opposite of the current one
-                  isDone: !item.isDone,
-                };
-              }
-              // if the item we are checking is not what we're looking for then return it as it is
-              return item;
-            })
-          );
-        }}
-      >
-        done
-      </button>
-      <button
-        className=" w-2/12"
-        onClick={() => {
-          prop.setTodoList(prop.todoList.filter((todo) => todo.id !== prop.id));
-        }}
-      >
-        delete
-      </button>
+    <div className="bg-cyan-800 h-10 text-cyan-200 pl-4 py-0 rounded-lg my-1">
+      <p className={lineThrough + " w-10/12 inline-block"}>{prop.text}</p>
+
+      {/* buttons */}
+      <div className=" justify-self-end inline-block h-full self-end">
+        {/* Complete button */}
+        <button
+          className=" hover:text-white h-full px-1"
+          onClick={() => {
+            setLineThrough(
+              lineThrough === "no-underline" ? " line-through" : "no-underline"
+            );
+          }}
+        >
+          <BsFillHandThumbsUpFill />
+        </button>
+
+        {/* delete button */}
+        <button
+          className=" hover:text-white h-full px-1 "
+          onClick={() => {
+            // get this element and store it inside of a variable
+            const thisElement = prop.todoList.filter(
+              (todo) => todo.id !== prop.id
+            );
+
+            prop.setTodoList(thisElement);
+          }}
+        >
+          <BsFillXSquareFill />
+        </button>
+      </div>
     </div>
   );
 }
