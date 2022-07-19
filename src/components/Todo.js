@@ -1,8 +1,9 @@
 function Todo(prop) {
   return (
-    <div>
-      <p>some text{prop.text}</p>
+    <div className="bg-sky-700 my-1 ">
+      <p className=" w-8/12 inline-block">{prop.text}</p>
       <button
+        className="w-2/12"
         onClick={() => {
           // set a new value to TodoList
           prop.setTodoList(
@@ -13,7 +14,6 @@ function Todo(prop) {
                 return {
                   // leave everything as they are
                   ...item,
-
                   // change the value of is done to the opposite of the current one
                   isDone: !item.isDone,
                 };
@@ -27,6 +27,7 @@ function Todo(prop) {
         done
       </button>
       <button
+        className=" w-2/12"
         onClick={() => {
           prop.setTodoList(prop.todoList.filter((todo) => todo.id !== prop.id));
         }}

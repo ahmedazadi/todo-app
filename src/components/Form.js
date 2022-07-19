@@ -5,11 +5,11 @@ function Form(prop) {
   return (
     <>
       <form
+        className=" h-8"
         // when usubmit button is clicked
         onSubmit={(e) => {
           // prevent page from reloading
           e.preventDefault();
-
           // leave currnet value of [todoList]array as it is and add a new item to it
           prop.setTodoList((currentValue) => {
             return [
@@ -19,11 +19,21 @@ function Form(prop) {
           });
 
           // empty the form
-          e.target.text.value = "";
+          // e.target.text.value = "";
         }}
       >
-        <input type="text" name="text" />
-        <input type="submit" />
+        <input
+          className=" h-full inline-block w-9/12"
+          type="text"
+          name="text"
+          onChange={() => {
+            console.log(this.value);
+          }}
+        />
+        <input
+          className="h-full inline-block w-3/12 cursor-pointer bg-slate-200"
+          type="submit"
+        />
       </form>
     </>
   );

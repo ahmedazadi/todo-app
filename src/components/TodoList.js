@@ -11,6 +11,7 @@ function TodoList(prop) {
               text={value.text}
               setTodoList={prop.setTodoList}
               todoList={prop.todoList}
+              isDone={prop.isDone}
             />
           );
         })}
