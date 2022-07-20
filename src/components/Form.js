@@ -1,11 +1,13 @@
 // import ID generator
 import IdGen from "../utility/IdGen";
+// import plus icon front fontawsome
+import { FaPlus } from "react-icons/fa";
 
 function Form(prop) {
   return (
     <>
       <form
-        className=" h-10"
+        className=" h-10 flex w-full"
         // when usubmit button is clicked
         onSubmit={(e) => {
           // prevent page from reloading
@@ -26,7 +28,7 @@ function Form(prop) {
         }}
       >
         <input
-          className=" h-full active:outline-none placeholder-cyan-200 text-white inline-block w-9/12 bg-cyan-500 rounded-l-lg px-4"
+          className=" h-full focus:border-none flex-grow self-start focus:bg-gray-300 placeholder-gray-500 text-black block  bg-white border-black border-2 px-4"
           type="text"
           name="text"
           placeholder="write you todo here...."
@@ -34,10 +36,13 @@ function Form(prop) {
             console.log(this.value);
           }}
         />
-        <input
-          className="duration-30 text-white hover:bg-cyan-900  px-4 h-full inline-block w-3/12 cursor-pointer bg-cyan-700 rounded-r-lg"
+        {/* <input value={} /> */}
+        <button
+          className=" p-0 duration-30 text-white hover:bg-gray-900 px-4 h-full block w-fit  cursor-pointer bg-black"
           type="submit"
-        />
+        >
+          <FaPlus className="" />
+        </button>
       </form>
     </>
   );

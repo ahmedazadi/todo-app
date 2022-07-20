@@ -2,6 +2,7 @@ import { useState } from "react";
 // css
 import "./index.css";
 // components
+import Header from "./components/Header";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
 // id generator
@@ -14,7 +15,8 @@ function App() {
   ]);
 
   return (
-    <div className=" max-w-md bg-transparent bg-white  border-2 rounded-lg m-auto mt-24 p-8">
+    <div className=" max-w-md bg-transparent bg-white border-2 rounded-lg m-auto mt-24 p-8">
+      <Header text="My Todo List" />
       {/* we pass in todoList vlaue for component to be able access list 
       and setTodoList function for component to be able change value */}
       <Form todoList={todoList} setTodoList={setTodoList} />
