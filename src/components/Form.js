@@ -1,9 +1,12 @@
 // import ID generator
 import IdGen from "../utility/IdGen";
+// import useState for input with text type
+import { useState } from "react";
 // import plus icon front fontawsome
 import { FaPlus } from "react-icons/fa";
 
 function Form(prop) {
+  const [inputText, setInputText] = useState("");
   return (
     <>
       <form
@@ -13,18 +16,15 @@ function Form(prop) {
           // prevent page from reloading
           e.preventDefault();
 
-          if (e.target.text.value !== "") {
+          if (inputText !== "") {
             // leave currnet value of [todoList]array as it is and add a new item to it
             prop.setTodoList((currentValue) => {
-              return [
-                ...currentValue,
-                { id: IdGen(), text: e.target.text.value },
-              ];
+              return [...currentValue, { id: IdGen(), text: inputText }];
             });
           }
 
           // empty the form
-          // e.target.text.value = "";
+          e.target.text.value = "";
         }}
       >
         <input
@@ -32,8 +32,8 @@ function Form(prop) {
           type="text"
           name="text"
           placeholder="write you todo here...."
-          onChange={() => {
-            console.log(this.value);
+          onChange={(e) => {
+            setInputText(e.target.value);
           }}
         />
         {/* <input value={} /> */}
